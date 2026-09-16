@@ -273,6 +273,16 @@ _nw = len([x for x in _abs.split() if any(c.isalnum() for c in x)])
 assert _nw <= 350, f"abstract is {_nw} words; BMC caps research-article abstracts at 350"
 checks += 1
 
+
+# --- generator validity by sampling temperature (cited in Background from our
+#     own measurement, since [2,3] do not support the temperature claim) ---
+_gt = json.load(open(f"{R}/generator_temperature.json"))
+for _t, _v in [("1.0", 93.3), ("1.2", 85.3), ("1.5", 64.1)]:
+    check(f"generator validity T={_t}", _v, _gt[_t]["validity"] * 100, 0.06)
+assert "sampling temperature" not in _main or "93.3" in _main, \
+    "the temperature claim must carry its own measurement, not a citation to [2,3]"
+checks += 1
+
 # every number the tex asserts must appear in this script
 print(f"checked {checks} claims")
 if fails:

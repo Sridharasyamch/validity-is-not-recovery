@@ -85,9 +85,11 @@ Molecular generative models emit molecules as strings, most often
 SMILES~\citep{weininger1988smiles}. A well-known failure mode is that a
 syntactically plausible string need not denote a molecule: ring-closure digits
 may be unbalanced, branches unclosed, valences violated, or an aromatic system
-un-kekulizable. Depending on architecture and sampling temperature, between a
-few percent and a large minority of sampled strings fail to
-parse~\citep{brown2019guacamol,polykovskiy2020moses}.
+un-kekulizable. Depending on architecture, between a few percent and a large
+minority of sampled strings fail to
+parse~\citep{brown2019guacamol,polykovskiy2020moses}. Sampling temperature
+compounds this: the character-level generator we use throughout falls from
+93.3\% valid at $T{=}1.0$ to 85.3\% at $T{=}1.2$ and 64.1\% at $T{=}1.5$.
 
 The dominant response has been prevention: constrained
 grammars~\citep{kusner2017grammar,dai2018syntax}, or alternative string

@@ -1,0 +1,18 @@
+{
+  "1.0": {
+    "n": 60000,
+    "valid": 55991,
+    "validity": 0.9332
+  },
+  "1.2": {
+    "n": 60000,
+    "valid": 51156,
+    "validity": 0.8526
+  },
+  "1.5": {
+    "n": 60000,
+    "valid": 38481,
+    "validity": 0.6413
+  },
+  "note": "validity of the character-level SMILES generator at three sampling temperatures"
+}
