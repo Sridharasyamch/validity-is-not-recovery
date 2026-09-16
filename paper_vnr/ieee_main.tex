@@ -877,12 +877,14 @@ over 46\% of its inputs.
 
 \paragraph{Availability of data and materials}
 The recovery benchmark (6{,}000 corrupted SMILES with ground truth, split into
-development and test), the generator-distribution benchmark, the enumerated
-candidate sets, all per-item system outputs, the trained character-level
-generator, and the code reproducing every table and figure are prepared for
-public release at \textcolor{red}{[REPOSITORY URL TO BE INSERTED]}. Source
-molecules are from the public GuacaMol/ChEMBL corpus. The code is released
-under the MIT licence.
+development and test), the multi-edit and external benchmarks, all per-item
+system outputs, and the code reproducing every table and figure are available at
+\url{https://github.com/Sridharasyamch/validity-is-not-recovery}. The trained
+generators and the supervised-corrector baseline are published as release assets
+in the same repository. The enumerated candidate sets and the 245{,}000-pair
+supervised-training corpus are omitted for size and regenerate deterministically
+from the released code. Source molecules are from the public GuacaMol/ChEMBL
+corpus. The code is released under the MIT licence.
 Baseline weights for the supervised corrector were trained by us; SmiSelf was run
 from its authors' released implementation.
 
