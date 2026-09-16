@@ -153,7 +153,7 @@ check("bracket ceiling", 52.6,
 
 import re as _re
 _bib = open("paper_vnr/references.bib").read()
-check("bib entries", 31, len(_re.findall(r"^@", _bib, _re.M)), 0.5)
+check("bib entries", 20, len(_re.findall(r"^@", _bib, _re.M)), 0.5)
 
 
 # --- scope experiments: multi-edit degradation, 2-edit cost, external benchmark ---
@@ -281,6 +281,13 @@ for _t, _v in [("1.0", 93.3), ("1.2", 85.3), ("1.5", 64.1)]:
     check(f"generator validity T={_t}", _v, _gt[_t]["validity"] * 100, 0.06)
 assert "sampling temperature" not in _main or "93.3" in _main, \
     "the temperature claim must carry its own measurement, not a citation to [2,3]"
+checks += 1
+
+
+# --- the bibliography ships to the editor: no internal working notes in it ---
+_bibtxt = open("paper_vnr/references.bib").read()
+for _bad in ["Kerkhof", "TODO", "FIXME", "verified via", "Confirm it is still"]:
+    assert _bad not in _bibtxt, f"internal note left in references.bib: {_bad!r}"
 checks += 1
 
 # every number the tex asserts must appear in this script
