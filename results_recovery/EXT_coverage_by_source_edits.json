@@ -1,0 +1,31 @@
+{
+  "n": 1200,
+  "by_source_edits": {
+    "=1": {
+      "n": 638,
+      "coverage": 1.0
+    },
+    "=2": {
+      "n": 231,
+      "coverage": 0.0346
+    },
+    "=3": {
+      "n": 32,
+      "coverage": 0.4688
+    },
+    "4-5": {
+      "n": 42,
+      "coverage": 0.3571
+    },
+    "6-10": {
+      "n": 57,
+      "coverage": 0.2456
+    },
+    ">10": {
+      "n": 200,
+      "coverage": 0.695
+    }
+  },
+  "grafted_coverage": 0.7368,
+  "nongrafted_coverage": 0.6851
+}

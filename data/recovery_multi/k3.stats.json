@@ -1,0 +1,14 @@
+{
+  "k": 3,
+  "n": 600,
+  "median_true_token_edit": 3,
+  "mean_true_token_edit": 3.29,
+  "observed_categories": {
+    "syntax_ring": 295,
+    "syntax_parens": 183,
+    "semantic_kekulize": 58,
+    "semantic_valence": 19,
+    "syntax_brackets": 11,
+    "syntax_other": 34
+  }
+}

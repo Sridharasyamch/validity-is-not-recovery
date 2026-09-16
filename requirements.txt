@@ -1,0 +1,8 @@
+# Remote GPU box (Thunder). vLLM brings its own CUDA torch build.
+vllm>=0.6.0
+rdkit>=2024.3.1
+openai>=1.40
+numpy
+pandas
+tqdm
+selfies

@@ -1,0 +1,41 @@
+# ---- superseded July manuscript and its build artifacts (NOT part of this work)
+paper/
+results/
+results_mixedtemp/
+
+# ---- internal working notes
+RESULTS_RECOVERY.md
+RESUME_HANDOFF.md
+PLAN.md
+AUDIT_*
+FIXES_TODO.md
+
+# ---- regenerable: candidate-set caches (src/enumerate_repairs.py reproduces these)
+data/**/cands_*.jsonl
+data/**/cands2_*.jsonl
+
+# ---- regenerable: supervised-training corpus (src/corrupt.py --n 250000 --seed 777)
+data/recovery_train/train.jsonl
+
+# ---- third-party corpora, publicly distributed by their own projects
+data/guacamol_*.smiles
+data/sample_gen.smiles
+data/benchmark/_work/
+third_party/
+
+# ---- model checkpoints (published separately as release assets)
+runs/
+*.pt
+*.pkg
+
+# ---- run logs and build artifacts
+logs_*.log
+*.log
+__pycache__/
+*.pyc
+.DS_Store
+paper_vnr/*.aux
+paper_vnr/*.out
+paper_vnr/*.blg
+paper_vnr/main_docx.tex
+paper_vnr/figures_png/

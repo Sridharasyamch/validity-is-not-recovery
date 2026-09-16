@@ -1,0 +1,26 @@
+\begin{table*}[t]
+\centering\small
+\caption{Representative recoveries. In every case the corruption is a single token, the toolkit localises the error, and the correct molecule is chosen from a candidate set of non-trivial size. Differences from the corrupted string are the only edit made.}
+\label{tab:examples}
+\begin{tabular}{@{}p{2.0cm}p{12.4cm}r@{}}
+\toprule
+Error type & Strings & $|C|$ \\
+\midrule
+\multirow{3}{*}{sem: kekulize} & \texttt{\footnotesize COc1cccc(CNC(=O)c2cc3ccc(-c4ccnc(N)c4)cc3[nH]2)1} \hfill\textit{\scriptsize in} \\
+ & \texttt{\footnotesize COc1cccc(CNC(=O)c2cc3ccc(-c4ccnc(N)c4)cc3[nH]2)c1} \hfill\textit{\scriptsize out} \\
+ & \texttt{\footnotesize COc1cccc(CNC(=O)c2cc3ccc(-c4ccnc(N)c4)cc3[nH]2)c1} \hfill\textit{\scriptsize truth} & 128 \\[2pt]
+\multirow{3}{*}{syn: ring} & \texttt{\footnotesize CCN(CC)Cc1c(O)c(Cl)ccc(C)cc(=O)oc12} \hfill\textit{\scriptsize in} \\
+ & \texttt{\footnotesize CCN(CC)Cc1c(O)c(Cl)cc2c(C)cc(=O)oc12} \hfill\textit{\scriptsize out} \\
+ & \texttt{\footnotesize CCN(CC)Cc1c(O)c(Cl)cc2c(C)cc(=O)oc12} \hfill\textit{\scriptsize truth} & 12 \\[2pt]
+\multirow{3}{*}{sem: valence} & \texttt{\footnotesize CC1=CC23OC2(CC(C)(C)C3=O)C(C)CFC1O} \hfill\textit{\scriptsize in} \\
+ & \texttt{\footnotesize CC1=CC23OC2(CC(C)(C)C3=O)C(C)CCC1O} \hfill\textit{\scriptsize out} \\
+ & \texttt{\footnotesize CC1=CC23OC2(CC(C)(C)C3=O)C(C)CCC1O} \hfill\textit{\scriptsize truth} & 17 \\[2pt]
+\multirow{3}{*}{syn: parens} & \texttt{\footnotesize CSc1ccc(Oc2ccncc2CN(C)Ccc1Cl} \hfill\textit{\scriptsize in} \\
+ & \texttt{\footnotesize CSc1ccc(Oc2ccncc2CN(C)C)cc1Cl} \hfill\textit{\scriptsize out} \\
+ & \texttt{\footnotesize CSc1ccc(Oc2ccncc2CN(C)C)cc1Cl} \hfill\textit{\scriptsize truth} & 11 \\[2pt]
+\multirow{3}{*}{syn: other} & \texttt{\footnotesize Cc1cc(C)cc(NC(==S)N2CCC(C(=O)c3ccc(F)cc3)CC2)c1} \hfill\textit{\scriptsize in} \\
+ & \texttt{\footnotesize Cc1cc(C)cc(NC(=S)N2CCC(C(=O)c3ccc(F)cc3)CC2)c1} \hfill\textit{\scriptsize out} \\
+ & \texttt{\footnotesize Cc1cc(C)cc(NC(=S)N2CCC(C(=O)c3ccc(F)cc3)CC2)c1} \hfill\textit{\scriptsize truth} & 36 \\
+\bottomrule
+\end{tabular}
+\end{table*}

@@ -1,0 +1,17 @@
+{
+  "n": 1200,
+  "scanned": 1266,
+  "attempts": 1201,
+  "source": "PAPYRUS (UnCorrupt repo)",
+  "operators": "UnCorrupt introduce_error, invalid_type=all, num_errors=1",
+  "fragment_grafted_frac": 0.1108,
+  "median_true_token_edit": 5,
+  "mean_true_token_edit": 9.71,
+  "observed_categories": {
+    "semantic_valence": 243,
+    "syntax_parens": 275,
+    "syntax_ring": 281,
+    "semantic_kekulize": 157,
+    "syntax_other": 244
+  }
+}

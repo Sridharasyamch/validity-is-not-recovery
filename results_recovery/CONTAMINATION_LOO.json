@@ -1,0 +1,79 @@
+{
+  "TEST_enumrank_domainlm_prune": {
+    "n_all": 4200,
+    "exact_all": 0.8067,
+    "n_clean": 4199,
+    "exact_clean": 0.8066,
+    "delta_pp": -0.0046,
+    "ci_clean": [
+      0.7944,
+      0.8183
+    ]
+  },
+  "TEST_seq2seq_supervised": {
+    "n_all": 4200,
+    "exact_all": 0.5943,
+    "n_clean": 4199,
+    "exact_clean": 0.5944,
+    "delta_pp": 0.0142,
+    "ci_clean": [
+      0.5795,
+      0.6092
+    ]
+  },
+  "TEST_enumrank_llm_prune": {
+    "n_all": 4200,
+    "exact_all": 0.5017,
+    "n_clean": 4199,
+    "exact_clean": 0.5015,
+    "delta_pp": -0.0119,
+    "ci_clean": [
+      0.4864,
+      0.5167
+    ]
+  },
+  "TEST_enum_shortest": {
+    "n_all": 4200,
+    "exact_all": 0.2307,
+    "n_clean": 4199,
+    "exact_clean": 0.2305,
+    "delta_pp": -0.0183,
+    "ci_clean": [
+      0.218,
+      0.2435
+    ]
+  },
+  "TEST_enum_uniform": {
+    "n_all": 4200,
+    "exact_all": 0.1364,
+    "n_clean": 4199,
+    "exact_clean": 0.1365,
+    "delta_pp": 0.0032,
+    "ci_clean": [
+      0.1264,
+      0.1472
+    ]
+  },
+  "TEST_looprich_k5_minedit_s0": {
+    "n_all": 4200,
+    "exact_all": 0.1379,
+    "n_clean": 4199,
+    "exact_clean": 0.1377,
+    "delta_pp": -0.0205,
+    "ci_clean": [
+      0.1276,
+      0.1484
+    ]
+  },
+  "smiself": {
+    "n_all": 4200,
+    "exact_all": 0.0117,
+    "n_clean": 4199,
+    "exact_clean": 0.0117,
+    "delta_pp": 0.0003,
+    "ci_clean": [
+      0.0088,
+      0.0154
+    ]
+  }
+}

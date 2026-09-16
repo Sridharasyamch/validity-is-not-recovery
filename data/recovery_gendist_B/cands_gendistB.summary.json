@@ -1,0 +1,7 @@
+{
+  "n": 2000,
+  "empty_candidate_sets": 1,
+  "median_candidates": 44,
+  "mean_candidates": 65.8,
+  "truth_in_candidates": 0.998
+}

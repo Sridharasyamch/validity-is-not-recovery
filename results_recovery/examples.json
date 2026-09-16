@@ -1,0 +1,47 @@
+[
+  {
+    "category": "semantic_kekulize",
+    "corrupted": "COc1cccc(CNC(=O)c2cc3ccc(-c4ccnc(N)c4)cc3[nH]2)1",
+    "diagnosis": "Can't kekulize mol.  Unkekulized atoms: 2 3 4 5 6  Aromaticity error: the listed",
+    "pred": "COc1cccc(CNC(=O)c2cc3ccc(-c4ccnc(N)c4)cc3[nH]2)c1",
+    "truth": "COc1cccc(CNC(=O)c2cc3ccc(-c4ccnc(N)c4)cc3[nH]2)c1",
+    "n_cands": 128,
+    "exact": true
+  },
+  {
+    "category": "syntax_ring",
+    "corrupted": "CCN(CC)Cc1c(O)c(Cl)ccc(C)cc(=O)oc12",
+    "diagnosis": "SMILES Parse Error: unclosed ring for input: 'CCN(CC)Cc1c(O)c(Cl)ccc(C)cc(=O)oc1",
+    "pred": "CCN(CC)Cc1c(O)c(Cl)cc2c(C)cc(=O)oc12",
+    "truth": "CCN(CC)Cc1c(O)c(Cl)cc2c(C)cc(=O)oc12",
+    "n_cands": 12,
+    "exact": true
+  },
+  {
+    "category": "semantic_valence",
+    "corrupted": "CC1=CC23OC2(CC(C)(C)C3=O)C(C)CFC1O",
+    "diagnosis": "Explicit valence for atom # 15 F, 2, is greater than permitted  Valence error: t",
+    "pred": "CC1=CC23OC2(CC(C)(C)C3=O)C(C)CCC1O",
+    "truth": "CC1=CC23OC2(CC(C)(C)C3=O)C(C)CCC1O",
+    "n_cands": 17,
+    "exact": true
+  },
+  {
+    "category": "syntax_parens",
+    "corrupted": "CSc1ccc(Oc2ccncc2CN(C)Ccc1Cl",
+    "diagnosis": "SMILES Parse Error: extra open parentheses while parsing: CSc1ccc(Oc2ccncc2CN(C)",
+    "pred": "CSc1ccc(Oc2ccncc2CN(C)C)cc1Cl",
+    "truth": "CSc1ccc(Oc2ccncc2CN(C)C)cc1Cl",
+    "n_cands": 11,
+    "exact": true
+  },
+  {
+    "category": "syntax_other",
+    "corrupted": "Cc1cc(C)cc(NC(==S)N2CCC(C(=O)c3ccc(F)cc3)CC2)c1",
+    "diagnosis": "SMILES Parse Error: syntax error while parsing: Cc1cc(C)cc(NC(==S)N2CCC(C(=O)c3c",
+    "pred": "Cc1cc(C)cc(NC(=S)N2CCC(C(=O)c3ccc(F)cc3)CC2)c1",
+    "truth": "Cc1cc(C)cc(NC(=S)N2CCC(C(=O)c3ccc(F)cc3)CC2)c1",
+    "n_cands": 36,
+    "exact": true
+  }
+]

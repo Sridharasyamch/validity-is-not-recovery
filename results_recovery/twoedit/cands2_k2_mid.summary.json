@@ -1,0 +1,11 @@
+{
+  "n": 20,
+  "beam": 150,
+  "budget_s": 15.0,
+  "empty_candidate_sets": 5,
+  "median_candidates": 87,
+  "mean_parses_per_item": 117818.9,
+  "mean_seconds_per_item": 15.32,
+  "budget_hit_frac": 1.0,
+  "truth_in_candidates": 0.3
+}

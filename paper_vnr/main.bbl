@@ -1,0 +1,144 @@
+\begin{thebibliography}{20}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Weininger(1988)]{weininger1988smiles}
+David Weininger.
+\newblock {SMILES}, a chemical language and information system. 1. introduction
+  to methodology and encoding rules.
+\newblock \emph{Journal of Chemical Information and Computer Sciences},
+  28\penalty0 (1):\penalty0 31--36, 1988.
+
+\bibitem[Brown et~al.(2019)Brown, Fiscato, Segler, and
+  Vaucher]{brown2019guacamol}
+Nathan Brown, Marco Fiscato, Marwin~HS Segler, and Alain~C Vaucher.
+\newblock {GuacaMol}: benchmarking models for de novo molecular design.
+\newblock \emph{Journal of Chemical Information and Modeling}, 59\penalty0
+  (3):\penalty0 1096--1108, 2019.
+
+\bibitem[Polykovskiy et~al.(2020)Polykovskiy, Zhebrak, Sanchez-Lengeling,
+  et~al.]{polykovskiy2020moses}
+Daniil Polykovskiy, Alexander Zhebrak, Benjamin Sanchez-Lengeling, et~al.
+\newblock Molecular sets ({MOSES}): a benchmarking platform for molecular
+  generation models.
+\newblock \emph{Frontiers in Pharmacology}, 11:\penalty0 565644, 2020.
+
+\bibitem[Kusner et~al.(2017)Kusner, Paige, and
+  Hern{\'a}ndez-Lobato]{kusner2017grammar}
+Matt~J Kusner, Brooks Paige, and Jos{\'e}~Miguel Hern{\'a}ndez-Lobato.
+\newblock Grammar variational autoencoder.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, pages
+  1945--1954, 2017.
+
+\bibitem[Dai et~al.(2018)Dai, Tian, Dai, Skiena, and Song]{dai2018syntax}
+Hanjun Dai, Yingtao Tian, Bo~Dai, Steven Skiena, and Le~Song.
+\newblock Syntax-directed variational autoencoder for structured data.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2018.
+
+\bibitem[Krenn et~al.(2020)Krenn, H{\"a}se, Nigam, Friederich, and
+  Aspuru-Guzik]{krenn2020selfies}
+Mario Krenn, Florian H{\"a}se, AkshatKumar Nigam, Pascal Friederich, and
+  Al{\'a}n Aspuru-Guzik.
+\newblock Self-referencing embedded strings ({SELFIES}): A 100\% robust
+  molecular string representation.
+\newblock \emph{Machine Learning: Science and Technology}, 1\penalty0
+  (4):\penalty0 045024, 2020.
+
+\bibitem[Skinnider(2024)]{skinnider2024invalid}
+Michael~A. Skinnider.
+\newblock Invalid {SMILES} are beneficial rather than detrimental to chemical
+  language models.
+\newblock \emph{Nature Machine Intelligence}, 6\penalty0 (4):\penalty0
+  437--448, 2024.
+\newblock \doi{10.1038/s42256-024-00821-x}.
+
+\bibitem[Yoon and Lee(2026)]{amrec}
+Suwan Yoon and Changhee Lee.
+\newblock Agentic molecular recovery via molecule-aware exploration.
+\newblock \emph{arXiv preprint arXiv:2606.05847}, 2026.
+
+\bibitem[Geng et~al.(2023)Geng, Josifoski, Peyrard, and West]{geng2023grammar}
+Saibo Geng, Martin Josifoski, Maxime Peyrard, and Robert West.
+\newblock Grammar-constrained decoding for structured {NLP} tasks without
+  finetuning.
+\newblock In \emph{Proceedings of EMNLP}, 2023.
+
+\bibitem[Krenn et~al.(2022)Krenn, Ai, Barthel, et~al.]{krenn2022selfies}
+Mario Krenn, Qianxiang Ai, Senja Barthel, et~al.
+\newblock {SELFIES} and the future of molecular string representations.
+\newblock \emph{Patterns}, 3\penalty0 (10):\penalty0 100588, 2022.
+
+\bibitem[Schoenmaker et~al.(2023)Schoenmaker, B{\'e}quignon, Jespers, and van
+  Westen]{schoenmaker2023uncorrupt}
+Linde Schoenmaker, Olivier J.~M. B{\'e}quignon, Willem Jespers, and Gerard
+  J.~P. van Westen.
+\newblock {UnCorrupt} {SMILES}: a novel approach to de novo design.
+\newblock \emph{Journal of Cheminformatics}, 15\penalty0 (1):\penalty0 22,
+  2023.
+\newblock \doi{10.1186/s13321-023-00696-x}.
+
+\bibitem[Tao et~al.(2025)Tao, Tang, Chan, Hooi, Bi, Peng, Liu, and
+  Wang]{smiself2025}
+Wen Tao, Jing Tang, Alvin Chan, Bryan Hooi, Baolong Bi, Nanyun Peng, Yuansheng
+  Liu, and Yiwei Wang.
+\newblock How to make large language models generate 100{\%} valid molecules?
+\newblock In \emph{Proceedings of the 2025 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, pages 26565--26580, Suzhou, China,
+  2025. Association for Computational Linguistics.
+\newblock \doi{10.18653/v1/2025.emnlp-main.1350}.
+
+\bibitem[Madaan et~al.(2023)Madaan, Tandon, Gupta,
+  et~al.]{madaan2023selfrefine}
+Aman Madaan, Niket Tandon, Prakhar Gupta, et~al.
+\newblock {Self-Refine}: Iterative refinement with self-feedback.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2023.
+
+\bibitem[Gou et~al.(2024)Gou, Shao, Gong, et~al.]{gou2024critic}
+Zhibin Gou, Zhihong Shao, Yeyun Gong, et~al.
+\newblock {CRITIC}: Large language models can self-correct with
+  tool-interactive critiquing.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2024.
+
+\bibitem[Welleck et~al.(2023)Welleck, Lu, West, et~al.]{welleck2023generating}
+Sean Welleck, Ximing Lu, Peter West, et~al.
+\newblock Generating sequences by learning to self-correct.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+
+\bibitem[d'Avila Garcez and Lamb(2023)]{garcez2023neurosymbolic}
+Artur d'Avila Garcez and Lu{\'i}s~C Lamb.
+\newblock Neurosymbolic {AI}: The 3rd wave.
+\newblock \emph{Artificial Intelligence Review}, 56:\penalty0 12387--12406,
+  2023.
+
+\bibitem[Landrum et~al.()]{rdkit}
+Greg Landrum et~al.
+\newblock {RDKit}: Open-source cheminformatics.
+\newblock \url{https://www.rdkit.org}.
+\newblock Accessed 2026.
+
+\bibitem[Rogers and Hahn(2010)]{rogers2010extended}
+David Rogers and Mathew Hahn.
+\newblock Extended-connectivity fingerprints.
+\newblock \emph{Journal of Chemical Information and Modeling}, 50\penalty0
+  (5):\penalty0 742--754, 2010.
+
+\bibitem[Bemis and Murcko(1996)]{bemis1996properties}
+Guy~W Bemis and Mark~A Murcko.
+\newblock The properties of known drugs. 1. molecular frameworks.
+\newblock \emph{Journal of Medicinal Chemistry}, 39\penalty0 (15):\penalty0
+  2887--2893, 1996.
+
+\bibitem[{Qwen Team}(2025)]{qwen2025}
+{Qwen Team}.
+\newblock {Qwen2.5} technical report.
+\newblock Technical report, Alibaba Group, 2025.
+\newblock arXiv:2412.15115.
+
+\end{thebibliography}

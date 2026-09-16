@@ -1,0 +1,52 @@
+{
+  "n": 1800,
+  "validity": 0.9989,
+  "exact_recovery": 0.3933,
+  "tanimoto_given_valid": 0.7458,
+  "scaffold_match_given_valid": 0.4527,
+  "mcs_frac_given_valid": null,
+  "policy": "lm_mean",
+  "prefix": "",
+  "model": "Qwen2.5-14B-Instruct",
+  "seed": 0,
+  "empty_candidate_sets": 2,
+  "oracle_truth_in_candidates": 0.9978,
+  "per_category": {
+    "semantic_kekulize": {
+      "n": 821,
+      "validity": 1.0,
+      "exact_recovery": 0.1766,
+      "tanimoto_given_valid": 0.6578
+    },
+    "semantic_valence": {
+      "n": 203,
+      "validity": 1.0,
+      "exact_recovery": 0.5222,
+      "tanimoto_given_valid": 0.8906
+    },
+    "syntax_brackets": {
+      "n": 9,
+      "validity": 0.7778,
+      "exact_recovery": 0.1111,
+      "tanimoto_given_valid": 0.5992
+    },
+    "syntax_other": {
+      "n": 101,
+      "validity": 1.0,
+      "exact_recovery": 0.7426,
+      "tanimoto_given_valid": 0.9146
+    },
+    "syntax_parens": {
+      "n": 76,
+      "validity": 1.0,
+      "exact_recovery": 0.5921,
+      "tanimoto_given_valid": 0.8074
+    },
+    "syntax_ring": {
+      "n": 590,
+      "validity": 1.0,
+      "exact_recovery": 0.5695,
+      "tanimoto_given_valid": 0.7832
+    }
+  }
+}

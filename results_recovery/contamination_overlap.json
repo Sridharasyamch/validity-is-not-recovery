@@ -1,0 +1,8 @@
+{
+  "test_overlap": [
+    "O=C(O)C1OC(Oc2ccc(C3C(CCC(O)c4ccc(F)cc4)C(=O)N3c3ccccc3)cc2)C(O)C(O)C1O"
+  ],
+  "dev_overlap": [
+    "COc1cc(OC)cc(N(CCO)c2cnc3ccc(-c4cnn(C)c4)cc3n2)c1"
+  ]
+}

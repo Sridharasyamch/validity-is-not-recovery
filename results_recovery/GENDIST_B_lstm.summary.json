@@ -1,0 +1,49 @@
+{
+  "n": 2000,
+  "validity": 0.9995,
+  "exact_recovery": 0.6495,
+  "tanimoto_given_valid": 0.8745,
+  "scaffold_match_given_valid": 0.7094,
+  "mcs_frac_given_valid": 0.9423,
+  "ranker": "domain_char_lstm",
+  "mode": "mean",
+  "prune": true,
+  "per_category": {
+    "semantic_kekulize": {
+      "n": 925,
+      "validity": 1.0,
+      "exact_recovery": 0.427,
+      "tanimoto_given_valid": 0.7922
+    },
+    "semantic_valence": {
+      "n": 223,
+      "validity": 1.0,
+      "exact_recovery": 0.7578,
+      "tanimoto_given_valid": 0.9353
+    },
+    "syntax_brackets": {
+      "n": 9,
+      "validity": 0.8889,
+      "exact_recovery": 0.4444,
+      "tanimoto_given_valid": 0.817
+    },
+    "syntax_other": {
+      "n": 109,
+      "validity": 1.0,
+      "exact_recovery": 0.9633,
+      "tanimoto_given_valid": 0.9888
+    },
+    "syntax_parens": {
+      "n": 68,
+      "validity": 1.0,
+      "exact_recovery": 0.8088,
+      "tanimoto_given_valid": 0.9323
+    },
+    "syntax_ring": {
+      "n": 666,
+      "validity": 1.0,
+      "exact_recovery": 0.8574,
+      "tanimoto_given_valid": 0.9444
+    }
+  }
+}

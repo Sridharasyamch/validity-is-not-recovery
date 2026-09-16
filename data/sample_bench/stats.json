@@ -1,0 +1,21 @@
+{
+  "total_diagnosed": 5999,
+  "valid": 4470,
+  "overall_validity_rate": 0.7451,
+  "invalid_total": 1529,
+  "unique_invalid_in_benchmark": 1529,
+  "benchmark_category_distribution": {
+    "semantic_valence": 184,
+    "syntax_ring": 493,
+    "semantic_kekulize": 596,
+    "syntax_brackets": 69,
+    "syntax_parens": 76,
+    "syntax_other": 111
+  },
+  "syntactic_vs_semantic_in_benchmark": {
+    "syntactic": 749,
+    "semantic": 780
+  },
+  "rdkit_crashers_skipped": 0,
+  "worker_restarts": 0
+}

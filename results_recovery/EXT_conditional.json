@@ -1,0 +1,11 @@
+{
+  "n": 1200,
+  "validity": 0.845,
+  "exact_recovery": 0.6042,
+  "answered_frac": 0.845,
+  "recovery_given_answered": 0.715,
+  "abstained_frac": 0.155,
+  "reachable_frac": 0.6908,
+  "recovery_given_reachable": 0.8745,
+  "recovery_given_unreachable": 0.0
+}

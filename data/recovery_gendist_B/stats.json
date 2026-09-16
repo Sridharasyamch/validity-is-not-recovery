@@ -1,0 +1,24 @@
+{
+  "n_total": 2000,
+  "n_dev": 0,
+  "n_test": 2000,
+  "source": "genB_valid.smiles",
+  "seed": 4242,
+  "observed_category_distribution": {
+    "syntax_ring": 666,
+    "semantic_kekulize": 925,
+    "syntax_other": 109,
+    "syntax_parens": 68,
+    "semantic_valence": 223,
+    "syntax_brackets": 9
+  },
+  "target_mix": {
+    "semantic_kekulize": 0.452,
+    "syntax_ring": 0.313,
+    "semantic_valence": 0.113,
+    "syntax_other": 0.054,
+    "syntax_parens": 0.037,
+    "syntax_brackets": 0.031
+  },
+  "operator_hit_intended_category_pct": 99.5
+}
