@@ -41,18 +41,17 @@ Bhimavaram, India\\
 \begin{abstract}
 \noindent
 Generative models for molecules routinely emit SMILES strings that no chemistry
-toolkit will parse, and a growing body of work aims to \emph{correct} them. That
-literature is evaluated almost entirely by \emph{validity}: the fraction of
-repaired strings that parse. We show that validity is a weak proxy for what
-actually matters, namely whether the \emph{intended} molecule is
-recovered, and that validity-only evaluation can substantially mis-rank
-molecular recovery systems.
+toolkit will parse, and a growing body of work aims to \emph{correct} them.
+\emph{Validity}, the fraction of repaired strings that parse, is the headline by
+which that work is claimed, even where identity metrics are reported too. We show
+validity is a weak proxy for whether the \emph{intended} molecule is recovered,
+and that validity-only evaluation can substantially mis-rank recovery systems.
 We build a leakage-controlled benchmark of 6{,}000 corrupted SMILES with known
 ground truth, drawn from a held-out molecule pool and corrupted with an operator
 mix calibrated to the error distribution of real generative-model failures. On
 it, a recent published corrector attains 86.6\% validity but recovers the
-intended molecule for only 1.2\% of inputs: it emits roughly 74 valid molecules
-for every correct one. An unconstrained large-language-model repair loop shows
+intended molecule for 1.2\% of inputs: roughly 74 valid molecules per correct
+one. An unconstrained large-language-model repair loop shows
 the opposite profile (47.7\% validity, 13.8\% recovery), so the two systems are
 ordered one way by validity and the other by recovery.
 We then show that invalid-SMILES recovery is better formulated as constrained
@@ -98,17 +97,24 @@ The dominant response has been prevention: constrained
 grammars~\citep{kusner2017grammar,dai2018syntax}, or alternative string
 encodings such as SELFIES~\citep{krenn2020selfies}, whose grammar makes every
 string decodable. A second and more recent response is correction: take the
-broken string and repair it. Correction is attractive because invalid outputs
-are not noise. They are concentrated in the regions of chemical space where the
-model is least certain, and discarding them biases the sampled distribution;
-indeed, invalid SMILES appear to carry useful training
-signal~\citep{skinnider2024invalid}.
+broken string and repair it. Correction is attractive because invalid strings are
+concentrated where the model is least certain, so discarding them throws away the
+model's hardest cases. The premise deserves care, however:
+\citet{skinnider2024invalid} shows that the ability to emit invalid strings is
+itself beneficial, acting as a self-corrective filter on low-likelihood samples,
+and that \emph{enforcing} validity introduces structural bias. That argument
+tells against prevention rather than against correction, since a repaired string
+is recovered after the fact rather than forced during sampling. It does mean the
+case for repair rests on recovering the intended molecule, not merely on raising
+a validity count.
 
-Both prevention and correction are, however, almost always scored the same way:
-by \emph{validity}, the fraction of outputs a toolkit will parse. Validity is
-easy to compute, needs no ground truth, and is the headline number in most of
-this literature. That it is not the whole story has been argued
-before~\citep{amrec,skinnider2024invalid}. What has not been established is how
+Validity is easy to compute, needs no ground truth, and is the number these
+systems are named and compared by. It is not the only number reported.
+\citet{schoenmaker2023uncorrupt} measure a molecule reconstruction rate of 78\%
+and observe that ``fixed molecules do not necessarily represent the original
+molecule''; \citet{smiself2025} report exact match to the ground truth alongside
+validity; and \citet{amrec} argue the distinction directly. The gap between
+validity and identity is therefore known. What has not been established is how
 much it costs: whether validity is a mildly noisy proxy for recovery or a
 qualitatively different quantity that can order systems the wrong way round.
 This paper answers that question, and supplies the benchmark and metrics needed
@@ -161,12 +167,14 @@ model.
 \paragraph{Correcting invalid strings}
 Closest to our setting are systems that repair broken SMILES directly. Sequence
 transduction models trained on synthetically corrupted SMILES learn to map
-invalid strings back to valid ones~\citep{schoenmaker2023uncorrupt}. A more recent
-approach converts an invalid SMILES into SELFIES via grammar rules, obtaining
-essentially complete validity~\citep{smiself2025}. Both are evaluated primarily
-by validity, and~\citet{smiself2025} additionally report that language-model
-correction is of limited benefit, a conclusion our results qualify, since it
-is drawn under validity-based scoring.
+invalid strings back to valid ones~\citep{schoenmaker2023uncorrupt}, which
+reports a 78\% molecule reconstruction rate and 70.5\% at one error per input.
+A more recent approach converts an invalid SMILES into SELFIES via grammar rules,
+obtaining essentially complete validity~\citep{smiself2025}; it too reports exact
+match to the ground truth, and reasons about whether corrected strings recover the
+intended molecule. Neither work is validity-only. What neither does, and what this
+paper supplies, is a controlled setting in which validity and identity are measured
+side by side across systems, so that the two rankings can be compared directly.
 
 \paragraph{Recovery rather than repair}
 Concurrently with this work, \citet{amrec} argue that repairing a string is not
@@ -665,7 +673,15 @@ SMILES~\citep{schoenmaker2023uncorrupt}, at one error per molecule, applied to
 their molecule source (PAPYRUS, a bioactivity corpus). The operators, the
 fragment library and the molecules are all theirs; our ranker has never seen a
 PAPYRUS molecule, so the benchmark doubles as an out-of-distribution test of the
-chemical prior ($n = 1{,}200$).
+chemical prior ($n = 1{,}200$). This reconstructs the condition
+\citet{schoenmaker2023uncorrupt} evaluate themselves, so their published figure is
+the natural reference point: 70.5\% reconstruction at one error per input, and
+78\% for their translator overall. The comparison is indicative rather than
+like-for-like, since their model is trained on this corruption distribution and
+ours is not, their evaluation set is their own validation split, and the operator
+mix differs from the one we sample. It is nonetheless the closest direct point of
+contact between the two systems, and we report it rather than leave it to be
+inferred.
 
 Their notion of ``one error'' is not one token: only 28.0\% of items lie a single
 token from the intended molecule, the median is 5, the 90th percentile is 26, and

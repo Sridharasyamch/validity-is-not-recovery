@@ -56,22 +56,6 @@ Michael~A. Skinnider.
   437--448, 2024.
 \newblock \doi{10.1038/s42256-024-00821-x}.
 
-\bibitem[Yoon and Lee(2026)]{amrec}
-Suwan Yoon and Changhee Lee.
-\newblock Agentic molecular recovery via molecule-aware exploration.
-\newblock \emph{arXiv preprint arXiv:2606.05847}, 2026.
-
-\bibitem[Geng et~al.(2023)Geng, Josifoski, Peyrard, and West]{geng2023grammar}
-Saibo Geng, Martin Josifoski, Maxime Peyrard, and Robert West.
-\newblock Grammar-constrained decoding for structured {NLP} tasks without
-  finetuning.
-\newblock In \emph{Proceedings of EMNLP}, 2023.
-
-\bibitem[Krenn et~al.(2022)Krenn, Ai, Barthel, et~al.]{krenn2022selfies}
-Mario Krenn, Qianxiang Ai, Senja Barthel, et~al.
-\newblock {SELFIES} and the future of molecular string representations.
-\newblock \emph{Patterns}, 3\penalty0 (10):\penalty0 100588, 2022.
-
 \bibitem[Schoenmaker et~al.(2023)Schoenmaker, B{\'e}quignon, Jespers, and van
   Westen]{schoenmaker2023uncorrupt}
 Linde Schoenmaker, Olivier J.~M. B{\'e}quignon, Willem Jespers, and Gerard
@@ -90,6 +74,22 @@ Wen Tao, Jing Tang, Alvin Chan, Bryan Hooi, Baolong Bi, Nanyun Peng, Yuansheng
   Natural Language Processing (EMNLP)}, pages 26565--26580, Suzhou, China,
   2025. Association for Computational Linguistics.
 \newblock \doi{10.18653/v1/2025.emnlp-main.1350}.
+
+\bibitem[Yoon and Lee(2026)]{amrec}
+Suwan Yoon and Changhee Lee.
+\newblock Agentic molecular recovery via molecule-aware exploration.
+\newblock \emph{arXiv preprint arXiv:2606.05847}, 2026.
+
+\bibitem[Geng et~al.(2023)Geng, Josifoski, Peyrard, and West]{geng2023grammar}
+Saibo Geng, Martin Josifoski, Maxime Peyrard, and Robert West.
+\newblock Grammar-constrained decoding for structured {NLP} tasks without
+  finetuning.
+\newblock In \emph{Proceedings of EMNLP}, 2023.
+
+\bibitem[Krenn et~al.(2022)Krenn, Ai, Barthel, et~al.]{krenn2022selfies}
+Mario Krenn, Qianxiang Ai, Senja Barthel, et~al.
+\newblock {SELFIES} and the future of molecular string representations.
+\newblock \emph{Patterns}, 3\penalty0 (10):\penalty0 100588, 2022.
 
 \bibitem[Madaan et~al.(2023)Madaan, Tandon, Gupta,
   et~al.]{madaan2023selfrefine}
