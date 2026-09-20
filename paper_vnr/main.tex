@@ -555,10 +555,12 @@ corrupting the generator's \emph{own} valid outputs.
 Enumerating single-token repairs for the real failures yields a non-empty
 candidate set for \textbf{91.5\%} of them (median 72 candidates). The design
 assumption thus holds of real generator output and is not an artefact of how we
-built the benchmark. The remaining 8.5\% carry more than one simultaneous
-error and are outside the current enumerator; we return them unchanged rather
-than guessing, which is the correct behaviour for a system that is asked to
-preserve identity.
+built the benchmark. For the remaining 8.5\% no valid molecule lies within one
+token edit, so they fall outside the current hypothesis space; we return them
+unchanged rather than guessing, which is the correct behaviour for a system that
+is asked to preserve identity. We cannot say why those sets are empty, since
+these are real failures for which no ground truth exists; only that a one-edit
+enumeration does not reach a valid molecule.
 
 \paragraph{Identity preservation without ground truth.}
 Exact recovery cannot be measured on real failures, since nobody knows which
@@ -737,9 +739,11 @@ draw no conclusion from the direction of the difference. Two of the remaining en
 results. Recovery conditioned on the truth \emph{not} being reachable is exactly
 zero: the method cannot return a molecule it never enumerated. Validity
 conditioned on answering is exactly 100\%, on data the system was never designed
-against. The 15.5\% it declines are the multi-edit corruptions of
-Experiment~\ref{sec:exp7}, and declining them is the correct behaviour for a
-system whose purpose is to preserve identity.
+against. For the 15.5\% it declines, no valid molecule lies within one token
+edit of the input. That is not the same as saying each carries several errors:
+their operators permute tokens and graft whole fragments, either of which can
+leave the one-edit space in a single application. Declining them is the correct
+behaviour for a system whose purpose is to preserve identity.
 
 \subsection{Experiment 9: does the prior have to match the generator?}\label{sec:exp9}
 

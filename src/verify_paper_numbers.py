@@ -297,6 +297,16 @@ assert "considine2025syntax" in _main, "Considine (arXiv:2507.11873) must be cit
 assert "That division is not ours" in _main, "the formulation's provenance must stay explicit"
 checks += 2
 
+
+# --- the corpus figure is the UNIQUE canonical count (1,272,851), not the number
+#     of parsed lines (1,273,104, which includes 253 duplicates) ---
+assert "1{,}272{,}851" in _main, "contamination corpus size must be the unique canonical count"
+assert "1{,}273{,}104" not in _main, "1,273,104 is the parsed count, not the unique count"
+# --- empty candidate sets are not evidence of multiple errors ---
+assert "carry more than one simultaneous" not in _main, \
+    "cannot attribute empty candidate sets to multiple errors without ground truth"
+checks += 3
+
 # every number the tex asserts must appear in this script
 print(f"checked {checks} claims")
 if fails:
