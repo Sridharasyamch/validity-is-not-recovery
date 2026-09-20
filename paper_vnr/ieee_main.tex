@@ -536,7 +536,7 @@ It reaches 74.8\% validity and 59.4\% exact recovery, far better than the
 validity-oriented systems of Section~\ref{sec:exp1} (SmiSelf at 1.2\%,
 rule-based repair at 0.0\%), confirming that in-distribution supervision on the
 right objective matters a great deal, and still 21 points below \ours{} (paired
-McNemar $+1210/-318$, $p_{\text{Bonf}} = 1.1\times10^{-121}$). The supervised
+McNemar $+1210/{-}318$, $p_{\text{Bonf}} = 1.1\times10^{-121}$). The supervised
 corrector also inherits the generative failure mode: one output in four does not
 parse at all, whereas enumeration makes invalidity impossible.
 
@@ -816,12 +816,12 @@ paired McNemar tests with Bonferroni correction ($m=6$):
 \toprule
 Comparison (exact recovery) & wins/losses & $p_{\text{Bonf}}$ \\
 \midrule
-\ours{} vs.\ SmiSelf                & $+3344/-5$    & $<10^{-300}$ \\
-\ours{} vs.\ shortest canonical     & $+2453/-34$   & $<10^{-300}$ \\
-\ours{} vs.\ general-LLM ranking    & $+1427/-146$  & $1.7\times10^{-263}$ \\
-\ours{} vs.\ supervised seq2seq     & $+1210/-318$  & $1.1\times10^{-121}$ \\
-Supervised seq2seq vs.\ SmiSelf     & $+2460/-13$   & $<10^{-300}$ \\
-Supervised seq2seq vs.\ LLM ranking & $+996/-607$   & $1.2\times10^{-21}$ \\
+\ours{} vs.\ SmiSelf                & $+3344/{-}5$    & $<10^{-300}$ \\
+\ours{} vs.\ shortest canonical     & $+2453/{-}34$   & $<10^{-300}$ \\
+\ours{} vs.\ general-LLM ranking    & $+1427/{-}146$  & $1.7\times10^{-263}$ \\
+\ours{} vs.\ supervised seq2seq     & $+1210/{-}318$  & $1.1\times10^{-121}$ \\
+Supervised seq2seq vs.\ SmiSelf     & $+2460/{-}13$   & $<10^{-300}$ \\
+Supervised seq2seq vs.\ LLM ranking & $+996/{-}607$   & $1.2\times10^{-21}$ \\
 \bottomrule
 \end{tabular}
 \end{table*}
