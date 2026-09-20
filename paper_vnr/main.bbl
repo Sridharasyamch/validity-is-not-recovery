@@ -1,4 +1,4 @@
-\begin{thebibliography}{20}
+\begin{thebibliography}{21}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -79,6 +79,11 @@ Wen Tao, Jing Tang, Alvin Chan, Bryan Hooi, Baolong Bi, Nanyun Peng, Yuansheng
 Suwan Yoon and Changhee Lee.
 \newblock Agentic molecular recovery via molecule-aware exploration.
 \newblock \emph{arXiv preprint arXiv:2606.05847}, 2026.
+
+\bibitem[Considine(2025)]{considine2025syntax}
+Breandan Considine.
+\newblock Syntax repair as language intersection.
+\newblock \emph{arXiv preprint arXiv:2507.11873}, 2025.
 
 \bibitem[Geng et~al.(2023)Geng, Josifoski, Peyrard, and West]{geng2023grammar}
 Saibo Geng, Martin Josifoski, Maxime Peyrard, and Robert West.

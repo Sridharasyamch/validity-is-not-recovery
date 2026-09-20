@@ -142,9 +142,12 @@ argue the field should report.
       apart, far enough to reverse the ordering of published systems. That
       validity is insufficient has been argued qualitatively~\citep{amrec};
       we measure the consequence (Section~\ref{sec:exp1}).
-\item A reformulation of recovery as constrained selection, and a six-stage
-      neuro-symbolic system, \ours{}, that attains 100.0\% validity and 80.7\%
-      exact recovery (Sections~\ref{sec:method}--\ref{sec:exp4}).
+\item A transfer of the bounded-edit constrained-selection formulation from
+      syntax repair~\citep{considine2025syntax} to molecular strings, instantiated
+      with a chemistry toolkit's diagnosis as the pruning constraint and a chemical
+      language model as the prior: a six-stage system, \ours{}, attaining 100.0\%
+      validity and 80.7\% exact recovery
+      (Sections~\ref{sec:method}--\ref{sec:exp4}).
 \item A decomposition showing \emph{where} recovery comes from: symbolic
       enumeration makes recovery possible (99.79\% candidate coverage); the
       chemical prior makes it accurate (12.7\%\,$\rightarrow$\,80.7\%).
@@ -204,9 +207,18 @@ the recovered molecule, which is the central tension this paper quantifies.
 Our method belongs to the family that couples a symbolic component with a
 learned one~\citep{garcez2023neurosymbolic}. The specific division of labour
 matters: rather than letting the neural component generate and the symbolic
-component merely check, we let the symbolic component define a sound and
-near-complete hypothesis space and use the neural component only to rank within
-it.
+component merely check, the symbolic component defines a sound hypothesis space
+and the neural component only ranks within it. That division is not ours.
+\citet{considine2025syntax} formulates bounded syntax repair as an intersection
+of a context-free language with a Levenshtein automaton, separating exact
+admissibility from probabilistic ranking, and argues that coverage must be
+measured because reranking cannot repair a retrieval failure. We adopt that
+formulation and ask what it takes to make it work for molecules, where the
+analogous machinery is unavailable: by our own measured error mix, kekulisation
+and valence violations account for 56.5\% of real failures, and neither is
+context-free. Our soundness therefore comes from an oracle filter (RDKit parse and sanitise)
+rather than from a grammar, and the pruning constraint from that same toolkit's
+diagnosis.
 
 \section{Problem formulation}\label{sec:formulation}
 

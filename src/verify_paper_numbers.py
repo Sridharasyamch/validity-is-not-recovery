@@ -153,7 +153,7 @@ check("bracket ceiling", 52.6,
 
 import re as _re
 _bib = open("paper_vnr/references.bib").read()
-check("bib entries", 20, len(_re.findall(r"^@", _bib, _re.M)), 0.5)
+check("bib entries", 21, len(_re.findall(r"^@", _bib, _re.M)), 0.5)
 
 
 # --- scope experiments: multi-edit degradation, 2-edit cost, external benchmark ---
@@ -289,6 +289,13 @@ _bibtxt = open("paper_vnr/references.bib").read()
 for _bad in ["Kerkhof", "TODO", "FIXME", "verified via", "Confirm it is still"]:
     assert _bad not in _bibtxt, f"internal note left in references.bib: {_bad!r}"
 checks += 1
+
+
+# --- novelty attribution: the constrained-selection formulation is transferred
+#     from syntax repair, not invented here ---
+assert "considine2025syntax" in _main, "Considine (arXiv:2507.11873) must be cited"
+assert "That division is not ours" in _main, "the formulation's provenance must stay explicit"
+checks += 2
 
 # every number the tex asserts must appear in this script
 print(f"checked {checks} claims")
