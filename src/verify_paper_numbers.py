@@ -319,6 +319,13 @@ assert "12.7\\%\\,$\\rightarrow$\\,80.7" not in _main, \
     "decomposition must compare 13.6% uniform to 80.7% on the same pruned set"
 checks += 1
 
+
+assert "barely\nbetter than published methods" not in _main and \
+       "barely better than published methods" not in _main, \
+    "uniform selection beats SmiSelf 11x; 'barely better' is wrong in both directions"
+assert "The decomposition is clean" not in _main, "do not grade our own decomposition"
+checks += 2
+
 # every number the tex asserts must appear in this script
 print(f"checked {checks} claims")
 if fails:

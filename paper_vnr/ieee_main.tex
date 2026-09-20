@@ -132,29 +132,26 @@ What a practitioner wants is \emph{recovery}: that $\hat{s}$ denotes $m$. This
 is measurable whenever ground truth is available, and it is the quantity we
 argue the field should report.
 
-\paragraph{Contributions}
-\begin{enumerate}\itemsep2pt
-\item A leakage-controlled recovery benchmark with known ground truth, built
-      from a held-out molecule pool and calibrated to the empirical error mix of
-      a real generative model (Section~\ref{sec:bench}).
-\item A \emph{quantitative} account of how far validity and recovery come
-      apart, far enough to reverse the ordering of published systems. That
-      validity is insufficient has been argued qualitatively~\citep{amrec};
-      we measure the consequence (Section~\ref{sec:exp1}).
-\item A transfer of the bounded-edit constrained-selection formulation from
-      syntax repair~\citep{considine2025syntax} to molecular strings, instantiated
-      with a chemistry toolkit's diagnosis as the pruning constraint and a chemical
-      language model as the prior: a six-stage system, \ours{}, attaining 100.0\%
-      validity and 80.7\% exact recovery
-      (Sections~\ref{sec:method}--\ref{sec:exp4}).
-\item A decomposition showing \emph{where} recovery comes from: symbolic
-      enumeration makes recovery possible (99.79\% candidate coverage); and on
-      the fixed pruned candidate set, selection raises exact recovery from
-      13.6\% with uniform choice to 80.7\% with the domain language model.
-\item A comparison against a supervised corrector trained in-distribution on
-      245k repair pairs, which \ours{} beats without any repair supervision
-      (Section~\ref{sec:exp5}).
-\end{enumerate}
+To ask it we build a leakage-controlled benchmark of corrupted SMILES with known
+ground truth, drawn from a held-out molecule pool and calibrated to the error mix
+a real generative model actually produces (Section~\ref{sec:bench}). On that
+benchmark we measure how far validity and recovery come apart, and find the gap
+wide enough to reverse the ordering of published systems: that validity is
+insufficient has been argued qualitatively~\citep{amrec}, and we quantify the
+consequence (Section~\ref{sec:exp1}).
+
+The method follows from the measurement. We take the bounded-edit
+constrained-selection formulation from syntax repair~\citep{considine2025syntax}
+and ask what it takes to make it work for molecules, instantiating it with a
+chemistry toolkit's diagnosis as the pruning constraint and a chemical language
+model as the prior. The resulting system, \ours{}, attains 100.0\% validity and
+80.7\% exact recovery (Sections~\ref{sec:method}--\ref{sec:exp4}), and the two
+halves can be separated: enumeration makes recovery possible, covering the
+ground truth for 99.79\% of items, while on that fixed pruned candidate set
+selection raises exact recovery from 13.6\% under uniform choice to 80.7\% with
+the domain language model. For a point of comparison outside its own family, we
+train a supervised corrector in-distribution on 245k repair pairs; \ours{} beats
+it without using any repair supervision at all (Section~\ref{sec:exp5}).
 
 \section{Related work}
 
@@ -871,13 +868,15 @@ metrics require ground truth, which is exactly what a benchmark like ours
 supplies.
 
 \paragraph{Where the difficulty actually lives}
-The decomposition is clean. Symbolic enumeration makes recovery \emph{possible}
-: it delivers a sound candidate set containing the answer 99.79\% of the time.
-The chemical prior makes recovery \emph{accurate}, raising exact recovery on
-the same pruned candidate set from 13.6\% with uniform selection to
-80.7\%. Neither half suffices alone: enumeration without a prior is barely
-better than published methods, and a prior without enumeration (the free LLM
-loop) sacrifices validity and drifts off the intended molecule.
+Symbolic enumeration makes recovery \emph{possible}: it delivers a sound
+candidate set containing the answer 99.79\% of the time. The chemical prior
+makes recovery \emph{accurate}, raising exact recovery on the same pruned
+candidate set from 13.6\% with uniform selection to 80.7\%. Neither half
+suffices alone. Enumeration without a prior already beats the published
+corrector we evaluate by an order of magnitude (13.6\% against 1.2\%) but falls
+well short of a supervised model trained for the task (59.4\%); a prior without
+enumeration, the free LLM loop, sacrifices validity and drifts off the intended
+molecule.
 
 \paragraph{Limitations}
 Our benchmark applies single-token corruptions. This is a deliberately narrow
