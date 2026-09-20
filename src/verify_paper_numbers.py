@@ -307,6 +307,18 @@ assert "carry more than one simultaneous" not in _main, \
     "cannot attribute empty candidate sets to multiple errors without ground truth"
 checks += 3
 
+
+# --- claims must not outrun the evidence for REAL failures (no ground truth) ---
+for _bad in ["carry multiple simultaneous", "admit a one-edit repair",
+             "transfers undegraded", "matches the modal real failure",
+             "All differences in Table"]:
+    assert _bad not in _main, f"unsupported claim reintroduced: {_bad!r}"
+checks += 5
+# the decomposition must use the uniform baseline on the SAME pruned candidate set
+assert "12.7\\%\\,$\\rightarrow$\\,80.7" not in _main, \
+    "decomposition must compare 13.6% uniform to 80.7% on the same pruned set"
+checks += 1
+
 # every number the tex asserts must appear in this script
 print(f"checked {checks} claims")
 if fails:

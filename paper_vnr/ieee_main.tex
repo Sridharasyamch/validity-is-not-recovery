@@ -63,17 +63,16 @@ remains.
 The resulting system reaches \textbf{100.0\% validity and 80.7\% exact
 recovery}, versus 59.4\% for a supervised sequence-to-sequence corrector trained
 on 245{,}000 in-distribution repair pairs, which our method needs none of.
-The ranker is trained only on a disjoint molecule split, so the result is not
-pretraining contamination. The approach transfers to real
-generative-model output: 91.5\% of 4{,}009 genuinely invalid strings sampled
-from a character-level generator admit a one-edit repair, and on corruptions of
-that generator's own molecules recovery is 78.9\%. On an external benchmark built
-with another group's corruption code and molecule corpus, recovery among
-reachable items is 87.5\%, and its output is always valid where it answers.
+The \ours{} ranker is trained only on a disjoint molecule split, so its headline
+result does not depend on web-pretrained recall of test molecules. It transfers
+to real generative-model output: 91.5\% of 4{,}009 genuinely invalid strings from
+a character-level generator have a non-empty one-edit candidate set, and on
+corruptions of that generator's own molecules recovery is 78.9\%. On an external benchmark built with another group's corruption code and corpus,
+recovery among reachable items is 87.5\%, and output is always valid where it
+answers.
 Coverage collapses from 99.7\% to 0.5\% once two errors coincide, bounding the
-scope. Ranking confidence supports calibrated abstention: 46\% of all inputs can
-be answered at 96.4\% precision.
-We release the benchmark, code, and per-item outputs.
+scope. Ranking confidence supports abstention: 46\% of inputs can be answered at
+96.4\% precision. We release the benchmark, code, and per-item outputs.
 \end{abstract}
 
 \vspace{0.5em}
@@ -149,8 +148,9 @@ argue the field should report.
       validity and 80.7\% exact recovery
       (Sections~\ref{sec:method}--\ref{sec:exp4}).
 \item A decomposition showing \emph{where} recovery comes from: symbolic
-      enumeration makes recovery possible (99.79\% candidate coverage); the
-      chemical prior makes it accurate (12.7\%\,$\rightarrow$\,80.7\%).
+      enumeration makes recovery possible (99.79\% candidate coverage); and on
+      the fixed pruned candidate set, selection raises exact recovery from
+      13.6\% with uniform choice to 80.7\% with the domain language model.
 \item A comparison against a supervised corrector trained in-distribution on
       245k repair pairs, which \ours{} beats without any repair supervision
       (Section~\ref{sec:exp5}).
@@ -374,7 +374,8 @@ recovery when it occurs.
 
 \begin{table*}[t]
 \centering\small
-\caption{Recovery on the held-out test split ($n=4{,}200$). Identity metrics are
+\caption{Recovery on the held-out test split ($n=4{,}200$). Validity and exact
+recovery are overall rates; Tanimoto similarity and scaffold match are
 conditioned on producing a valid molecule. $\mathrm{V/R}$ is valid outputs per
 correct recovery; 1.0 is ideal.}
 \label{tab:main}
@@ -510,7 +511,7 @@ is replaced by enumeration and progressively better selection rules.}
 
 \input{table_examples_ieee}
 
-\paragraph{Free generation is the wrong mechanism}
+\paragraph{Free generation is poorly suited to this repair setting}
 Our own earlier system is instructive as a negative result. Adding symbolic
 feedback and iteration to an LLM repair loop raises validity monotonically
 (23.4\% $\rightarrow$ 27.0\% $\rightarrow$ 37.4\% $\rightarrow$ 47.7\%) but
@@ -555,11 +556,12 @@ that, we apply the pipeline to 4{,}009 genuinely invalid SMILES sampled from our
 character-level generator at $T=1.0$, and to a second benchmark built by
 corrupting the generator's \emph{own} valid outputs.
 
-\paragraph{The one-edit hypothesis space holds on real failures}
+\paragraph{One-edit valid candidates exist for most real failures}
 Enumerating single-token repairs for the real failures yields a non-empty
-candidate set for \textbf{91.5\%} of them (median 72 candidates). The design
-assumption thus holds of real generator output and is not an artefact of how we
-built the benchmark. For the remaining 8.5\% no valid molecule lies within one
+candidate set for \textbf{91.5\%} of them (median 72 candidates). The one-edit
+candidate space is therefore operationally useful for most real generator
+failures, and is not an artefact of how we built the benchmark, although
+intended recovery cannot be established here without ground truth. For the remaining 8.5\% no valid molecule lies within one
 token edit, so they fall outside the current hypothesis space; we return them
 unchanged rather than guessing, which is the correct behaviour for a system that
 is asked to preserve identity. We cannot say why those sets are empty, since
@@ -808,8 +810,8 @@ guarantees it regardless of which model does the ranking.
 
 \subsection{Statistical significance}
 
-All differences in Table~\ref{tab:main} are significant under exact paired
-McNemar tests with Bonferroni correction ($m=6$):
+The six prespecified pairwise comparisons below are significant under exact
+paired McNemar tests with Bonferroni correction ($m=6$):
 
 \begin{table*}[t]
 \centering\small
@@ -871,16 +873,18 @@ supplies.
 \paragraph{Where the difficulty actually lives}
 The decomposition is clean. Symbolic enumeration makes recovery \emph{possible}
 : it delivers a sound candidate set containing the answer 99.79\% of the time.
-The chemical prior makes recovery \emph{accurate}, converting 12.7\% into
+The chemical prior makes recovery \emph{accurate}, raising exact recovery on
+the same pruned candidate set from 13.6\% with uniform selection to
 80.7\%. Neither half suffices alone: enumeration without a prior is barely
 better than published methods, and a prior without enumeration (the free LLM
 loop) sacrifices validity and drifts off the intended molecule.
 
 \paragraph{Limitations}
-Our benchmark applies single-token corruptions. This matches the modal real
-failure, and Section~\ref{sec:exp6} shows that 91.5\% of real generator failures
-admit a one-edit repair, but the remaining 8.5\% carry multiple simultaneous
-errors and are outside the current enumerator. Section~\ref{sec:exp7}
+Our benchmark applies single-token corruptions. This is a deliberately narrow
+hypothesis space; Section~\ref{sec:exp6} shows that 91.5\% of real generator
+failures have a non-empty one-edit valid candidate set, while the remaining
+8.5\% have no valid repair within that space and are outside the current
+enumerator. Section~\ref{sec:exp7}
 quantifies that boundary rather than assuming it: coverage falls from 99.7\% at
 one edit to 0.5\% at two and 0.0\% at three, and a bounded two-edit search
 recovers much of the $k{=}2$ case (58.3\% coverage) only at roughly three orders
@@ -888,9 +892,9 @@ of magnitude more compute. Bracket corruptions expose a further ceiling of the
 one-edit hypothesis space (52.6\% coverage on that category, $n=19$). Finally,
 our ranker is the generator itself, which is the intended deployment;
 Section~\ref{sec:exp6} indicates this does not inflate results and
-Section~\ref{sec:exp8} shows the prior transfers undegraded to a molecule corpus
-it never saw, but the cost of a deliberately adversarial mismatch remains
-uncharacterised.
+Section~\ref{sec:exp8} shows no observed drop in conditional recovery on an
+external molecule corpus it never saw, but the cost of a deliberately
+adversarial mismatch remains uncharacterised.
 
 \section{Conclusion}
 
