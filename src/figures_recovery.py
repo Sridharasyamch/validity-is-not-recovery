@@ -150,7 +150,12 @@ def fig_candidate_space():
     a2.set_yticks(y); a2.set_yticklabels(cats, fontsize=7)
     a2.invert_yaxis(); a2.set_xlim(0, 1.05)
     a2.set_xlabel("fraction")
-    a2.legend(frameon=False, fontsize=6.8, loc="lower right")
+    # the legend must sit outside the axes: its swatches are the same colours as
+    # the bars, so inside it reads as bar and hides the one category (brackets)
+    # whose coverage is not ~1
+    a2.legend(frameon=False, fontsize=6.8, loc="lower center",
+              bbox_to_anchor=(0.5, 1.01), ncol=2, columnspacing=1.2,
+              handletextpad=0.4)
     fig.savefig(f"{OUT}/fig_candidate_space.pdf")
     plt.close(fig)
     print("  fig_candidate_space")
