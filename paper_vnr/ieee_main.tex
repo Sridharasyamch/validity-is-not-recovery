@@ -48,31 +48,31 @@ validity is a weak proxy for whether the \emph{intended} molecule is recovered,
 and that validity-only evaluation can substantially mis-rank recovery systems.
 We build a leakage-controlled benchmark of 6{,}000 corrupted SMILES with known
 ground truth, drawn from a held-out molecule pool and corrupted with an operator
-mix calibrated to the error distribution of real generative-model failures. On
+mix calibrated to real generative-model failures. On
 it, a recent published corrector attains 86.6\% validity but recovers the
 intended molecule for 1.2\% of inputs: roughly 74 valid molecules per correct
-one. An unconstrained large-language-model repair loop shows
-the opposite profile (47.7\% validity, 13.8\% recovery), so the two systems are
-ordered one way by validity and the other by recovery.
+one. An unconstrained large-language-model repair loop shows the opposite profile
+(47.7\% validity, 13.8\% recovery), so the two are ordered one way by validity
+and the other by recovery.
 We then show that invalid-SMILES recovery is better formulated as constrained
-candidate \emph{selection} than as unconstrained sequence generation. A symbolic
+candidate \emph{selection} than as sequence generation. A symbolic
 enumerator over single-token edits yields a candidate set containing the ground
 truth for 99.79\% of items (median 50 candidates); the toolkit's diagnosis
-prunes it losslessly; and a character-level chemical language model ranks what
-remains.
+supports a pruning rule selected to be lossless on the development split; and a
+character-level chemical language model ranks what remains.
 The resulting system reaches \textbf{100.0\% validity and 80.7\% exact
 recovery}, versus 59.4\% for a supervised sequence-to-sequence corrector trained
-on 245{,}000 in-distribution repair pairs, which our method needs none of.
+on 245{,}000 repair pairs, which our method needs none of.
 The \ours{} ranker is trained only on a disjoint molecule split, so its headline
-result does not depend on web-pretrained recall of test molecules. It transfers
-to real generative-model output: 91.5\% of 4{,}009 genuinely invalid strings from
+result does not depend on web-pretrained recall of test molecules. It applies to
+real generative-model output: 91.5\% of 4{,}009 genuinely invalid strings from
 a character-level generator have a non-empty one-edit candidate set, and on
 corruptions of that generator's own molecules recovery is 78.9\%. On an external benchmark built with another group's corruption code and corpus,
 recovery among reachable items is 87.5\%, and output is always valid where it
 answers.
 Coverage collapses from 99.7\% to 0.5\% once two errors coincide, bounding the
-scope. Ranking confidence supports abstention: 46\% of inputs can be answered at
-96.4\% precision. We release the benchmark, code, and per-item outputs.
+scope. Ranking confidence supports abstention: 46\% of inputs answer at 96.4\%
+precision. We release the benchmark, code, and per-item outputs.
 \end{abstract}
 
 \vspace{0.5em}
