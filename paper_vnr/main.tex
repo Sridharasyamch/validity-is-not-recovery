@@ -5,6 +5,8 @@
 \usepackage{caption}
 \usepackage[hidelinks]{hyperref}
 \usepackage[numbers,sort&compress]{natbib}
+\renewcommand{\bibfont}{\small}
+\setlength{\bibsep}{3pt plus 1pt}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
 \usepackage{placeins}
@@ -162,14 +164,24 @@ output space, and they do not help with strings already emitted by a deployed
 model.
 
 \paragraph{Correcting invalid strings.}
-Closest to our setting are systems that repair broken SMILES directly. Sequence
+Closest to our setting are systems that repair broken SMILES directly. Learned
+correction of SMILES syntax dates at least to SCROP, which couples a
+retrosynthesis transformer with a neural syntax corrector~\citep{zheng2020scrop}.
+Sequence
 transduction models trained on synthetically corrupted SMILES learn to map
 invalid strings back to valid ones~\citep{schoenmaker2023uncorrupt}, which
 reports a 78\% molecule reconstruction rate and 70.5\% at one error per input.
 A more recent approach converts an invalid SMILES into SELFIES via grammar rules,
 obtaining essentially complete validity~\citep{smiself2025}; it too reports exact
 match to the ground truth, and reasons about whether corrected strings recover the
-intended molecule. Neither work is validity-only. What neither does, and what this
+intended molecule. ChemFixer~\citep{park2026chemfixer} fine-tunes a
+masked-pretrained transformer on real rather than synthetic failures: the invalid strings a transformer
+VAE emits while learning to reconstruct molecules, each paired with its
+reconstruction target. It reports validity and correction rate with
+distribution-level measures (FCD, SNN), and notes that corrected molecules need
+not match the original, examining mismatches through their Bemis--Murcko
+scaffolds. None of these works is
+validity-only. What none of them does, and what this
 paper supplies, is a controlled setting in which validity and identity are measured
 side by side across systems, so that the two rankings can be compared directly.
 
@@ -245,8 +257,8 @@ requested ones.
 
 \section{A leakage-controlled recovery benchmark}\label{sec:bench}
 
-Measuring recovery requires ground truth, which real generative-model failures
-do not come with. We therefore construct corruptions of known molecules, and
+Measuring recovery requires ground truth, which failures from a freely sampling
+generative model do not come with. We therefore construct corruptions of known molecules, and
 take care that the construction neither leaks the answer nor drifts from
 realistic errors.
 
@@ -257,8 +269,8 @@ invalid output with a two-stage RDKit diagnosis that separates parse failures
 from sanitisation failures. That measured distribution (kekulisation 45.2\%,
 ring closure 31.3\%, valence 11.3\%, other syntax 5.4\%, parentheses 3.7\%,
 brackets 3.1\%) is used as the \emph{target} sampling mix for the corruption
-operators, so that the synthetic corruptions mirror the errors a real model
-makes. The mix actually realised in the benchmark is close but not identical
+operators, so that the synthetic corruptions follow the mix of error types a real
+model makes. The mix actually realised in the benchmark is close but not identical
 (kekulisation 45.8\%, ring 32.7\%, valence 11.9\%, other 5.6\%, parentheses
 3.6\%, brackets 0.5\%), because a corruption is accepted only when it yields a
 genuinely invalid string. Brackets are the one operator that materially
@@ -551,20 +563,21 @@ corrupting the generator's \emph{own} valid outputs.
 
 \paragraph{One-edit valid candidates exist for most real failures.}
 Enumerating single-token repairs for the real failures yields a non-empty
-candidate set for \textbf{91.5\%} of them (median 72 candidates). The one-edit
-candidate space is therefore operationally useful for most real generator
-failures, and is not an artefact of how we built the benchmark, although
-intended recovery cannot be established here without ground truth. For the remaining 8.5\% no valid molecule lies within one
+candidate set for \textbf{91.5\%} of them (median 72 candidates). A non-empty
+set is necessary for recovery but not sufficient, since two-error strings often
+admit a valid one-edit repair that is not the intended molecule
+(Section~\ref{sec:exp7}); 91.5\% is therefore an upper bound on the share of these
+failures the method can recover, not an estimate of it. For the remaining 8.5\% no valid molecule lies within one
 token edit, so they fall outside the current hypothesis space; we return them
 unchanged rather than guessing, which is the correct behaviour for a system that
 is asked to preserve identity. We cannot say why those sets are empty, since
-these are real failures for which no ground truth exists; only that a one-edit
+these are sampled failures for which no ground truth exists; only that a one-edit
 enumeration does not reach a valid molecule.
 
 \paragraph{Identity preservation without ground truth.}
-Exact recovery cannot be measured on real failures, since nobody knows which
-molecule the model intended, and that is precisely why the controlled benchmark
-exists. What can be measured is how much of the string a repair destroys. A
+Exact recovery cannot be measured on these failures: a generator sampling
+freely records no intended molecule, and that is precisely why the controlled
+benchmark exists. What can be measured is how much of the string a repair destroys. A
 method that rewrites most of the molecule cannot be preserving what the
 generator was reaching for, whatever its validity rate.
 
@@ -605,8 +618,9 @@ items (median 47 candidates) and uniform selection scores 12.5\%, both close to
 the main benchmark. \ours{} recovers 78.9\% exactly at 99.9\% validity, against
 80.7\% on the GuacaMol-derived benchmark.
 
-The method transfers to the distribution a real model produces, losing under two
-points. Note also that the ranker here is the very model that generated the
+Recovery carries over to the molecules a real model produces, losing under two
+points. The errors are still our operators, so this varies the molecules rather
+than the error process. Note also that the ranker here is the very model that generated the
 molecules, so the prior is matched to the data: the deployment setting, but
 equally the configuration in which one would most expect an inflated result.
 Performance is slightly \emph{lower} than on molecules the ranker has never seen,
@@ -635,9 +649,13 @@ $k$ (simultaneous edits) & one-edit coverage & median candidates & empty sets \\
 
 \noindent
 The enumerator does not degrade gracefully. It is near-complete at $k=1$ and of
-almost no use at $k=2$, which fixes the method's scope boundary and makes the
-measurement in Section~\ref{sec:exp6} load-bearing: 91.5\% of \emph{real}
-generator failures fall on the useful side of it. On the $k=1$ benchmark, whose molecules
+almost no use at $k=2$, which fixes the method's scope boundary. The $k=2$ row
+also qualifies Section~\ref{sec:exp6}: 276 of those 600 strings still have a
+non-empty candidate set, yet only 3 of those sets contain the intended molecule,
+so a non-empty set does not show that a real failure is a single edit. Our data
+cannot settle how many real failures fall inside the boundary;
+\citet{park2026chemfixer} describe one to five erroneous tokens per sequence as
+typical in their MOSES setting, which suggests the multi-edit case is not marginal. On the $k=1$ benchmark, whose molecules
 are disjoint from the main benchmark entirely, \ours{} recovers \textbf{80.0\%}
 exactly at 100\% validity, replicating the 80.7\% headline on fresh molecules.
 
@@ -873,7 +891,9 @@ Our benchmark applies single-token corruptions. This is a deliberately narrow
 hypothesis space; Section~\ref{sec:exp6} shows that 91.5\% of real generator
 failures have a non-empty one-edit valid candidate set, while the remaining
 8.5\% have no valid repair within that space and are outside the current
-enumerator. Section~\ref{sec:exp7}
+enumerator. A non-empty set bounds recoverability without establishing it,
+and free sampling records no target to measure it against; an autoencoder's
+reconstruction failures do~\citep{park2026chemfixer}, and would close this gap. Section~\ref{sec:exp7}
 quantifies that boundary rather than assuming it: coverage falls from 99.7\% at
 one edit to 0.5\% at two and 0.0\% at three, and a bounded two-edit search
 recovers much of the $k{=}2$ case (58.3\% coverage) only at roughly three orders

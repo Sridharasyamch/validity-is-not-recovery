@@ -153,7 +153,7 @@ check("bracket ceiling", 52.6,
 
 import re as _re
 _bib = open("paper_vnr/references.bib").read()
-check("bib entries", 21, len(_re.findall(r"^@", _bib, _re.M)), 0.5)
+check("bib entries", 23, len(_re.findall(r"^@", _bib, _re.M)), 0.5)
 
 
 # --- scope experiments: multi-edit degradation, 2-edit cost, external benchmark ---
@@ -325,6 +325,30 @@ assert "barely\nbetter than published methods" not in _main and \
     "uniform selection beats SmiSelf 11x; 'barely better' is wrong in both directions"
 assert "The decomposition is clean" not in _main, "do not grade our own decomposition"
 checks += 2
+
+# --- ChemFixer (Park et al., IEEE JBHI 2026) is a same-task corrector ---
+_flat = " ".join(_main.split())
+assert "park2026chemfixer" in _main, "ChemFixer (doi 10.1109/JBHI.2025.3593825) must be cited"
+assert "zheng2020scrop" in _main, "SCROP (doi 10.1021/acs.jcim.9b00949), earliest learned SMILES corrector, must be cited"
+checks += 2
+
+# --- a non-empty one-edit set is an upper bound on recovery, not evidence of a single edit ---
+_c2 = [json.loads(l) for l in open("data/recovery_multi/cands_k2.jsonl")]
+_ne2 = [r for r in _c2 if r["candidates"]]
+check("k=2 non-empty candidate sets", 276, len(_ne2), 0.5)
+check("k=2 non-empty sets containing the intended molecule", 3,
+      sum(1 for r in _ne2 if r.get("truth_in_candidates")), 0.5)
+assert "276 of those 600 strings" in _flat and "only 3 of those sets" in _flat, \
+    "Exp 7 must state the k=2 non-empty/containing figures it relies on"
+checks += 1
+for _bad in ["fall on the useful side of it", "operationally useful for most real",
+             "nobody knows which molecule", "load-bearing: 91.5",
+             "not an artefact of how we built the benchmark",
+             "which real generative-model failures do not come with",
+             "mirror the errors a real model makes",
+             "transfers to the distribution a real model produces"]:
+    assert _bad not in _flat, f"real-failure overclaim reintroduced: {_bad!r}"
+checks += 8
 
 # every number the tex asserts must appear in this script
 print(f"checked {checks} claims")
