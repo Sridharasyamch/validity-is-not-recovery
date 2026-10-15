@@ -1,0 +1,225 @@
+\providecommand{\latin}[1]{#1}
+\makeatletter
+\providecommand{\doi}
+  {\begingroup\let\do\@makeother\dospecials
+  \catcode`\{=1 \catcode`\}=2 \doi@aux}
+\providecommand{\doi@aux}[1]{\endgroup\texttt{#1}}
+\makeatother
+\providecommand*\mcitethebibliography{\thebibliography}
+\csname @ifundefined\endcsname{endmcitethebibliography}
+  {\let\endmcitethebibliography\endthebibliography}{}
+\begin{mcitethebibliography}{24}
+\providecommand*\natexlab[1]{#1}
+\providecommand*\mciteSetBstSublistMode[1]{}
+\providecommand*\mciteSetBstMaxWidthForm[2]{}
+\providecommand*\mciteBstWouldAddEndPuncttrue
+  {\def\EndOfBibitem{\unskip.}}
+\providecommand*\mciteBstWouldAddEndPunctfalse
+  {\let\EndOfBibitem\relax}
+\providecommand*\mciteSetBstMidEndSepPunct[3]{}
+\providecommand*\mciteSetBstSublistLabelBeginEnd[3]{}
+\providecommand*\EndOfBibitem{}
+\mciteSetBstSublistMode{f}
+\mciteSetBstMaxWidthForm{subitem}{(\alph{mcitesubitemcount})}
+\mciteSetBstSublistLabelBeginEnd
+  {\mcitemaxwidthsubitemform\space}
+  {\relax}
+  {\relax}
+
+\bibitem[Weininger(1988)]{weininger1988smiles}
+Weininger,~D. {SMILES}, a chemical language and information system. 1.
+  {I}ntroduction to methodology and encoding rules. \emph{Journal of Chemical
+  Information and Computer Sciences} \textbf{1988}, \emph{28}, 31--36\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Brown \latin{et~al.}(2019)Brown, Fiscato, Segler, and
+  Vaucher]{brown2019guacamol}
+Brown,~N.; Fiscato,~M.; Segler,~M.~H.; Vaucher,~A.~C. {GuacaMol}: benchmarking
+  models for de novo molecular design. \emph{Journal of Chemical Information
+  and Modeling} \textbf{2019}, \emph{59}, 1096--1108\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Polykovskiy \latin{et~al.}(2020)Polykovskiy, Zhebrak,
+  Sanchez-Lengeling, \latin{et~al.} others]{polykovskiy2020moses}
+Polykovskiy,~D.; Zhebrak,~A.; Sanchez-Lengeling,~B., \latin{et~al.}  Molecular
+  sets ({MOSES}): a benchmarking platform for molecular generation models.
+  \emph{Frontiers in Pharmacology} \textbf{2020}, \emph{11}, 565644\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kusner \latin{et~al.}(2017)Kusner, Paige, and
+  Hern{\'a}ndez-Lobato]{kusner2017grammar}
+Kusner,~M.~J.; Paige,~B.; Hern{\'a}ndez-Lobato,~J.~M. Grammar variational
+  autoencoder. International Conference on Machine Learning (ICML). 2017; pp
+  1945--1954\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Dai \latin{et~al.}(2018)Dai, Tian, Dai, Skiena, and
+  Song]{dai2018syntax}
+Dai,~H.; Tian,~Y.; Dai,~B.; Skiena,~S.; Song,~L. Syntax-directed variational
+  autoencoder for structured data. International Conference on Learning
+  Representations (ICLR). 2018\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Krenn \latin{et~al.}(2020)Krenn, H{\"a}se, Nigam, Friederich, and
+  Aspuru-Guzik]{krenn2020selfies}
+Krenn,~M.; H{\"a}se,~F.; Nigam,~A.; Friederich,~P.; Aspuru-Guzik,~A.
+  Self-referencing embedded strings ({SELFIES}): A 100\% robust molecular
+  string representation. \emph{Machine Learning: Science and Technology}
+  \textbf{2020}, \emph{1}, 045024\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Skinnider(2024)]{skinnider2024invalid}
+Skinnider,~M.~A. Invalid {SMILES} are beneficial rather than detrimental to
+  chemical language models. \emph{Nature Machine Intelligence} \textbf{2024},
+  \emph{6}, 437--448\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Schoenmaker \latin{et~al.}(2023)Schoenmaker, B{\'e}quignon, Jespers,
+  and van Westen]{schoenmaker2023uncorrupt}
+Schoenmaker,~L.; B{\'e}quignon,~O. J.~M.; Jespers,~W.; van Westen,~G. J.~P.
+  {UnCorrupt} {SMILES}: a novel approach to de novo design. \emph{Journal of
+  Cheminformatics} \textbf{2023}, \emph{15}, 22\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Tao \latin{et~al.}(2025)Tao, Tang, Chan, Hooi, Bi, Peng, Liu, and
+  Wang]{smiself2025}
+Tao,~W.; Tang,~J.; Chan,~A.; Hooi,~B.; Bi,~B.; Peng,~N.; Liu,~Y.; Wang,~Y. How
+  to Make Large Language Models Generate 100{\%} Valid Molecules? Proceedings
+  of the 2025 Conference on Empirical Methods in Natural Language Processing
+  (EMNLP). Suzhou, China, 2025; pp 26565--26580\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Yoon and Lee(2026)Yoon, and Lee]{amrec}
+Yoon,~S.; Lee,~C. Agentic Molecular Recovery via Molecule-Aware Exploration.
+  \emph{arXiv preprint arXiv:2606.05847} \textbf{2026}, \relax
+\mciteBstWouldAddEndPunctfalse
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Considine(2025)]{considine2025syntax}
+Considine,~B. Syntax Repair as Language Intersection. \emph{arXiv preprint
+  arXiv:2507.11873} \textbf{2025}, \relax
+\mciteBstWouldAddEndPunctfalse
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Geng \latin{et~al.}(2023)Geng, Josifoski, Peyrard, and
+  West]{geng2023grammar}
+Geng,~S.; Josifoski,~M.; Peyrard,~M.; West,~R. Grammar-constrained decoding for
+  structured {NLP} tasks without finetuning. Proceedings of the 2023 Conference
+  on Empirical Methods in Natural Language Processing (EMNLP). 2023; pp
+  10932--10952\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Krenn \latin{et~al.}(2022)Krenn, Ai, Barthel, \latin{et~al.}
+  others]{krenn2022selfies}
+Krenn,~M.; Ai,~Q.; Barthel,~S., \latin{et~al.}  {SELFIES} and the future of
+  molecular string representations. \emph{Patterns} \textbf{2022}, \emph{3},
+  100588\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Zheng \latin{et~al.}(2020)Zheng, Rao, Zhang, Xu, and
+  Yang]{zheng2020scrop}
+Zheng,~S.; Rao,~J.; Zhang,~Z.; Xu,~J.; Yang,~Y. Predicting Retrosynthetic
+  Reactions Using Self-Corrected Transformer Neural Networks. \emph{Journal of
+  Chemical Information and Modeling} \textbf{2020}, \emph{60}, 47--55\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Park \latin{et~al.}(2026)Park, Song, and Lee]{park2026chemfixer}
+Park,~J.-H.; Song,~H.-J.; Lee,~S.-W. {ChemFixer}: Correcting Invalid Molecules
+  to Unlock Previously Unseen Chemical Space. \emph{IEEE Journal of Biomedical
+  and Health Informatics} \textbf{2026}, \emph{30}, 1772--1784\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Madaan \latin{et~al.}(2023)Madaan, Tandon, Gupta, \latin{et~al.}
+  others]{madaan2023selfrefine}
+Madaan,~A.; Tandon,~N.; Gupta,~P., \latin{et~al.}  {Self-Refine}: Iterative
+  refinement with self-feedback. Advances in Neural Information Processing
+  Systems (NeurIPS). 2023\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Gou \latin{et~al.}(2024)Gou, Shao, Gong, \latin{et~al.}
+  others]{gou2024critic}
+Gou,~Z.; Shao,~Z.; Gong,~Y., \latin{et~al.}  {CRITIC}: Large language models
+  can self-correct with tool-interactive critiquing. International Conference
+  on Learning Representations (ICLR). 2024\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Welleck \latin{et~al.}(2023)Welleck, Lu, West, \latin{et~al.}
+  others]{welleck2023generating}
+Welleck,~S.; Lu,~X.; West,~P., \latin{et~al.}  Generating sequences by learning
+  to self-correct. International Conference on Learning Representations (ICLR).
+  2023\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[d'Avila Garcez and Lamb(2023)d'Avila Garcez, and
+  Lamb]{garcez2023neurosymbolic}
+d'Avila Garcez,~A.; Lamb,~L.~C. Neurosymbolic {AI}: The 3rd wave.
+  \emph{Artificial Intelligence Review} \textbf{2023}, \emph{56},
+  12387--12406\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Landrum \latin{et~al.}()Landrum, \latin{et~al.} others]{rdkit}
+Landrum,~G., \latin{et~al.}  {RDKit}: Open-source cheminformatics.
+  \url{https://www.rdkit.org}, Accessed 2026\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Rogers and Hahn(2010)Rogers, and Hahn]{rogers2010extended}
+Rogers,~D.; Hahn,~M. Extended-connectivity fingerprints. \emph{Journal of
+  Chemical Information and Modeling} \textbf{2010}, \emph{50}, 742--754\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Bemis and Murcko(1996)Bemis, and Murcko]{bemis1996properties}
+Bemis,~G.~W.; Murcko,~M.~A. The properties of known drugs. 1. {M}olecular
+  frameworks. \emph{Journal of Medicinal Chemistry} \textbf{1996}, \emph{39},
+  2887--2893\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[{Qwen Team}(2024)]{qwen2025}
+{Qwen Team}, {Qwen2.5} Technical Report. \emph{arXiv preprint arXiv:2412.15115}
+  \textbf{2024}, \relax
+\mciteBstWouldAddEndPunctfalse
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}

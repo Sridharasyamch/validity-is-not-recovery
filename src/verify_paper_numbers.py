@@ -238,6 +238,19 @@ assert _os2.path.getmtime("paper_vnr/ieee_main.tex") >= _os2.path.getmtime("pape
     "ieee_main.tex is older than main.tex -- regenerate it from main.tex"
 checks += 1
 
+# --- the ACS/JCIM variant is DERIVED from main.tex; it must not go stale either ---
+_acs = open("paper_vnr/acs_main.tex").read()
+_secs_acs = set(_re2.findall(r"\\subsection\{([^}]*)\}", _acs))
+_missing_acs = _secs_main - _secs_acs
+assert not _missing_acs, ("acs_main.tex is STALE -- regenerate with src/make_acs.py. "
+                          f"Missing sections: {sorted(_missing_acs)}")
+assert _os2.path.getmtime("paper_vnr/acs_main.tex") >= _os2.path.getmtime("paper_vnr/main.tex") - 5, \
+    "acs_main.tex is older than main.tex -- regenerate it with src/make_acs.py"
+for _need in ["achemso", "Data and Software Availability", "competing financial interest",
+              "toc_graphic", "Author Contributions"]:
+    assert _need in _acs, f"ACS variant is missing a JCIM requirement: {_need!r}"
+checks += 3
+
 # --- guard: em-dashes belong only in the two "not applicable" table rows ---
 _prose = _re2.sub(r"\\begin\{tabular\}.*?\\end\{tabular\}", "", _main, flags=_re2.S)
 assert "---" not in _prose, "em-dash found in main.tex prose (only table cells may use ---)"

@@ -59,8 +59,13 @@ python src/rank_domain_lm.py --cands data/recovery/cands_test.jsonl \
 
 `verify_paper_numbers.py` is the gate: it asserts every number in the manuscript
 against the files in `results_recovery/`, and fails loudly rather than reporting
-a mismatch. It also guards the build (the IEEE variant must not drift from the
-main source) and the prose.
+a mismatch. It also guards the build (the IEEE and ACS variants must not drift
+from the main source) and the prose.
+
+`paper_vnr/main.tex` is the only manuscript source that is edited by hand.
+`ieee_main.tex` (two-column IEEE) and `acs_main.tex` (ACS/JCIM, achemso) are
+generated from it by `src/make_ieee.py` and `src/make_acs.py`; regenerate them
+rather than editing or recompiling them directly.
 
 ## Not in this repository
 
