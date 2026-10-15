@@ -14,15 +14,15 @@ import os
 
 D = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "paper_vnr")
 
-ACS_AUTHORS = r"""\author{Sridhara Syam Chandrabhotla}
+ACS_AUTHORS = r"""\author{\mbox{Sridhara Syam Chandrabhotla}}
 \altaffiliation{All authors contributed equally.}
 \affiliation{Independent Researcher, Bhimavaram, India}
 \email{11sridharasyam@gmail.com}
-\author{KPK Lalitha Vitala}
+\author{\mbox{KPK Lalitha Vitala}}
 \altaffiliation{All authors contributed equally.}
 \affiliation{Department of Electronics and Communications, Vishnu Institute of
 Technology, Bhimavaram, India}
-\author{S.\ Diwakar Bhagavathula}
+\author{\mbox{S.\ Diwakar Bhagavathula}}
 \altaffiliation{All authors contributed equally.}
 \affiliation{Department of Chemistry, SRKR Engineering College, Bhimavaram, India}
 \keywords{SMILES; molecular string repair; generative models for molecules;
